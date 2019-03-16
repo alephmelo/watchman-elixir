@@ -9,7 +9,7 @@ defmodule Utils do
   ## Examples
 
       iex> Utils.list_subdirs
-      ["test", "config", "_build", "lib"]
+      ["test", "config", "mock", "_build", "lib"]
 
   """
   def list_subdirs(dir \\ ".") do
@@ -18,5 +18,29 @@ defmodule Utils do
         sub_dir
       end
     end)
+  end
+
+  def check_status(sub_dir) do
+    result =
+      System.cmd(
+        "git",
+        ["--git-dir", "./#{sub_dir}/.git", "name-rev", "--name-only", "HEAD"],
+        stderr_to_stdout: true
+      )
+
+    case result do
+      {branch, 0} -> {:ok, sub_dir, String.replace_suffix(branch, "\n", "")}
+      _ -> :error
+    end
+  end
+
+  def print_result(result) do
+    case result do
+      {:ok, sub_dir, branch} ->
+        IO.puts("Repository #{sub_dir} on branch #{branch}")
+
+      _ ->
+        :error
+    end
   end
 end

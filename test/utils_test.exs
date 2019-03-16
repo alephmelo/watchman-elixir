@@ -3,7 +3,6 @@ defmodule UtilsTest do
   doctest Utils
 
   test "check current subdirs" do
-    assert Utils.list_subdirs == ["test", "config", "_build", "lib"]
+    assert Utils.list_subdirs == ["test", "config", "mock", "_build", "lib"]
   end
 end
-

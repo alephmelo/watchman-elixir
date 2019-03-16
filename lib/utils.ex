@@ -38,6 +38,7 @@ defmodule Utils do
     case result do
       {:ok, sub_dir, branch} ->
         IO.puts("Repository #{sub_dir} on branch #{branch}")
+        :ok
 
       _ ->
         :error

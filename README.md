@@ -15,6 +15,18 @@ def deps do
 end
 ```
 
+## Usage
+Enter Elixir's interpreter with
+
+```
+iex -S mix
+```
+```
+iex(1)> Watchman.main
+Repository mock on branch develop
+:ok
+```
+
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/watchman](https://hexdocs.pm/watchman).

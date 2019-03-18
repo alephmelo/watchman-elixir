@@ -1,3 +1,4 @@
+import IO.ANSI
 defmodule Utils do
   @moduledoc """
   Documentation for Utils.
@@ -37,7 +38,7 @@ defmodule Utils do
   def print_result(result) do
     case result do
       {:ok, sub_dir, branch} ->
-        IO.puts("Repository #{sub_dir} on branch #{branch}")
+        IO.puts("Repository #{sub_dir} on branch #{green()}#{branch}#{reset()}")
         :ok
 
       _ ->
